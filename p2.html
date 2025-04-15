@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/p2.css">
+    <style>
+        .caixa {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .botao {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;  /* Alinha os botões lado a lado */
+            gap: 10px;  /* Espaço entre os botões */
+        }
+
+        #no {
+            padding: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: top 0.2s, left 0.2s;
+        }
+
+        button {
+            height: 60px;
+            width: 100px;
+            background: white;
+            color: blue;
+            font-weight: 600;
+            border-radius: 10px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="caixa">
+        <div class="txt-animado">
+            <h1>ACEITA SER NOSSO PARANINFO??<span></span></h1>
+        </div>
+        <div class="botao">
+            <button>
+                <a href="p3.html">SIM</a>
+            </button>
+            <button id="no">NÃO</button>
+        </div>
+    </div>
+
+    <div>
+        <p class="st1">⭐</p>
+        <p class="st2">⭐</p>
+        <p class="st3">⭐</p>
+        <p class="st4">⭐</p>
+        <p class="st5">⭐</p>
+        <p class="st6">⭐</p>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+
+        // Função para mover o botão "NÃO"
+        function moveButton() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Gera novas posições aleatórias para o botão
+            const randomX = Math.random() * (windowWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (windowHeight - noButton.offsetHeight);
+
+            // Muda a posição do botão
+            noButton.style.position = 'absolute';  // Define o posicionamento absoluto para movimento
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+
+        // Função para o efeito de "fuga" do botão quando o mouse se aproxima
+        function handleMouseMove(event) {
+            const buttonRect = noButton.getBoundingClientRect();
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Distância entre o mouse e o centro do botão
+            const distX = Math.abs(mouseX - (buttonRect.left + buttonRect.width / 2));
+            const distY = Math.abs(mouseY - (buttonRect.top + buttonRect.height / 2));
+
+            // Se o cursor estiver perto, mover o botão
+            if (distX < 100 && distY < 100) { // 100px é a área em que o botão "foge"
+                moveButton();
+            }
+        }
+
+        // Adicionar o evento de movimento do mouse na tela
+        document.addEventListener('mousemove', handleMouseMove);
+    </script>
+</body>
+</html>

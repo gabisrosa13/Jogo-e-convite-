@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Caça à Caixa</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <h1>Jogo de Caça à Caixa!</h1>
+    <p>Pontos: <span id="score">0</span></p> <!-- Local onde a pontuação será exibida -->
+    <h4>Clique no quadrado e pontue</h4>
+    <div class="game-container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+<script>
+    // Variáveis para contar os pontos e selecionar as caixas
+    let score = 0;
+    const scoreElement = document.getElementById('score');
+    
+    // Selecionar todas as caixas
+    const boxes = document.querySelectorAll('.box');
+    
+    // Função para lidar com o clique na caixa
+    function handleBoxClick(event) {
+        // Mudar a cor da caixa para coral
+        event.target.classList.add('clicked');
+    
+        // Aumentar o contador de pontos
+        score++;
+    
+        // Atualizar o contador na tela
+        scoreElement.textContent = score;
+    
+        // Impedir múltiplos cliques na mesma caixa (desabilita cliques futuros)
+        event.target.style.pointerEvents = 'none'; // Desabilita novos cliques
+        
+        // Redirecionar para a página p2.html após o clique
+        window.location.href = 'p2.html'; // Redireciona para a página p2.html
+    }
+    
+    // Adicionar o evento de clique para todas as caixas
+    boxes.forEach(box => {
+        box.addEventListener('click', handleBoxClick);
+    });
+    
+</script>
+</body>
+</html>

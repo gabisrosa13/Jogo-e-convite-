@@ -1,0 +1,60 @@
+/* Estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #191919;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: white;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: aliceblue;
+}
+
+h4{
+    color: rgb(255, 56, 56);
+}
+
+#score {
+    font-weight: bold;
+    color: #ff6347; /* Cor da pontuação */
+}
+
+/* Container do Jogo */
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Move os elementos para cima */
+    height: 80vh; /* Reduz um pouco a altura do container */
+    position: relative;
+    padding-top: 50px; /* Adiciona espaço no topo */
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    animation: move 2s infinite alternate ease-in-out;
+    cursor: pointer;
+}
+
+/* Animação de Movimento */
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(200px, 0); }
+    50% { transform: translate(200px, 200px); }
+    75% { transform: translate(0, 200px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Mudar a cor para Coral ao clicar */
+.box.clicked {
+    background-color: coral;
+}
